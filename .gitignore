@@ -1,0 +1,12 @@
+# Folders
+.vscode
+build
+lib
+node_modules
+tmp
+
+# Files
+.DS_Store
+yarn-error.log
+npm-debug.log
+

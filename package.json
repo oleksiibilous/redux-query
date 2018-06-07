@@ -1,0 +1,52 @@
+{
+  "author": "Rocket Station <contact@rstation.io> (https://rstation.io)",
+  "contributors": [
+    "Oleksii Bilous <oleksiibilous@rstation.io> (https://rstation.io)",
+    "Oleksii Pysanko <oleksiipysanko@rstation.io> (https://rstation.io)"
+  ],
+  "dependencies": {
+    "immutable": "v4.0.0-rc.9",
+    "object-hash": "1"
+  },
+  "description": "provides helpers to search through immutable map, cache results, return pure JS objects",
+  "devDependencies": {
+    "babel-cli": "6",
+    "babel-core": "6",
+    "babel-eslint": "8",
+    "babel-plugin-transform-object-rest-spread": "6",
+    "babel-preset-env": "1",
+    "babel-preset-minify": "0.3",
+    "eslint": "4",
+    "eslint-config-standard": "11",
+    "eslint-plugin-import": "2",
+    "eslint-plugin-node": "6",
+    "eslint-plugin-promise": "3",
+    "eslint-plugin-standard": "3",
+    "jest": "23"
+  },
+  "engines": {
+    "node": ">=9"
+  },
+  "files": [
+    "lib"
+  ],
+  "keywords": [
+    "redux",
+    "reselect",
+    "rereselect",
+    "immutable"
+  ],
+  "license": "MIT",
+  "main": "lib/index.js",
+  "name": "@rocketstation/redux-query",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rocketstation/redux-query.git"
+  },
+  "scripts": {
+    "build": "rm -rf lib && babel src -d lib --ignore *.test.js",
+    "lint": "eslint src --fix --ignore-pattern *.test.js",
+    "test": "jest src"
+  },
+  "version": "1.0.0"
+}
