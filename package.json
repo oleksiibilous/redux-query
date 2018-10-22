@@ -5,27 +5,31 @@
     "Oleksii Pysanko <oleksiipysanko@rstation.io> (https://rstation.io)"
   ],
   "dependencies": {
-    "immutable": "v4.0.0-rc.9",
+    "immutable": "4.0.0-rc.10",
     "object-hash": "1"
   },
   "description": "provides helpers to search through immutable map, cache results, return pure JS objects",
   "devDependencies": {
-    "babel-cli": "6",
-    "babel-core": "6",
-    "babel-eslint": "8",
-    "babel-plugin-transform-object-rest-spread": "6",
-    "babel-preset-env": "1",
-    "babel-preset-minify": "0.3",
-    "eslint": "4",
-    "eslint-config-standard": "11",
+    "@babel/cli": "7",
+    "@babel/core": "7",
+    "@babel/plugin-proposal-class-properties": "7",
+    "@babel/plugin-proposal-decorators": "7",
+    "@babel/polyfill": "7",
+    "@babel/preset-env": "7",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-eslint": "10",
+    "babel-jest": "23",
+    "babel-preset-minify": "0.5",
+    "eslint": "5",
+    "eslint-config-standard": "12",
     "eslint-plugin-import": "2",
-    "eslint-plugin-node": "6",
-    "eslint-plugin-promise": "3",
-    "eslint-plugin-standard": "3",
+    "eslint-plugin-node": "7",
+    "eslint-plugin-promise": "4",
+    "eslint-plugin-standard": "4",
     "jest": "23"
   },
   "engines": {
-    "node": ">=9"
+    "node": ">=10"
   },
   "files": [
     "lib"
@@ -48,5 +52,5 @@
     "lint": "eslint src --fix --ignore-pattern *.test.js",
     "test": "jest src"
   },
-  "version": "1.0.0"
+  "version": "1.0.1"
 }
