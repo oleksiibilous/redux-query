@@ -53,7 +53,7 @@ We created Redux Query to simplify our interactions with Redux state. It resolve
 
 | Name | Type | Vals | Default | Description |
 | - | - | - | - | - |
-| `sequence` | `Array<Function>` | `Function(get, set)` | `[]` | An array of getters, which will be executed in the sequential query
+| `sequence` | `Array<Function>` | `Function(get, store)` | `[]` | An array of helpers, which will be executed in the sequential query
 | `scope` | `Array<String>` | `[...String]` | `[]` | If it is defined it determines the root node of the map. Otherwise, each query will process the whole store
 | `store` | [Immutable Map](https://facebook.github.io/immutable-js/docs/#/Map) | [Immutable Map](https://facebook.github.io/immutable-js/docs/#/Map)| [`Immutable.Map()`](https://facebook.github.io/immutable-js/docs/#/Map) | |
 | `props` | `Object` | `Object` | `{}` | An object, which will be passed to any custom helper |
@@ -63,8 +63,14 @@ We created Redux Query to simplify our interactions with Redux state. It resolve
 | Name | Type | Vals | Default | Description |
 | - | - | - | - | - |
 | `key` | `null`, `String`, `Array` | `null`, `String`, `[String, String]`, `[String, true]` `[null, null]`, `[null, String]`, `[null, true]` `[String, null]`, | `undefined` | If it is passed, it will be searched in a store. If an array of two strings is passed, the first string will be used as a key, which will be searched in a store, and the second string will be used as an alias, which will be returned in a result. If the second item is not defined and a founded value is an object, it will be merged into a result. Otherwise, it will be attached to result by a key or an alias |
-| `val` | `Function`, `Array<Function>` | `[...get()]` | `undefined` | If it is passed, will be used as a nested helper |
+| `val` | `Function`, `Array<Function>` | `[...(get || store)()]` | `undefined` | If it is passed, will be used as a nested helper |
 | `initial` | Any | Any | `Immutable.Map()` | It will be returned, if found val is undefined |
+
+`store(sequence)(store, props, result)` - initiates a helper, which memorizes a result and calculates it again only if something was changed
+
+| Name | Type | Vals | Default | Description |
+| - | - | - | - | - |
+| `sequence` | `Array<Function>` | `Function(get, store)` | `[]` | An array of helpers, which will be executed in the sequential query
 
 
 ## Inspiration
