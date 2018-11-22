@@ -1,6 +1,6 @@
 import { Map } from 'immutable'
 
-export default (key, val, initial) => {
+export default (key, val, initial = Map()) => {
   const [name, alias] = [].concat(key)
 
   return (store, props, result) => {

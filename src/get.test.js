@@ -11,7 +11,7 @@ const store = Map({
 
 const props = { version: 1 }
 
-const helper = jest.fn(((obj = {}) => obj))
+const helper = jest.fn((obj = {}) => obj)
 
 const result = Map()
 
@@ -36,7 +36,6 @@ it('limits store & passes fallback if key is passed', () => {
 it('passes store next & props & result to nested getters if val is passed', () => {
   get(null, helper)(store, props, result)
 
-  expect(Map).toBeCalledTimes(1)
   expect(helper).toBeCalledWith(store, props, expect.any(Object))
 })
 
@@ -47,7 +46,6 @@ it('assigns store next to result by alias', () => {
 
   expect(result.set).toBeCalledWith(key[1], store[key[0]])
 })
-
 
 it('merges store next to result if alias is undefined & store next is immutable map', () => {
   const key = 'obj'

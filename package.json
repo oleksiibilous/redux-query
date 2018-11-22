@@ -5,8 +5,7 @@
     "Oleksii Pysanko <oleksiipysanko@rstation.io> (https://rstation.io)"
   ],
   "dependencies": {
-    "immutable": "4.0.0-rc.10",
-    "object-hash": "1"
+    "immutable": "4.0.0-rc.10"
   },
   "description": "provides helpers to search through immutable map, cache results, return pure JS objects",
   "devDependencies": {
@@ -23,7 +22,7 @@
     "eslint": "5",
     "eslint-config-standard": "12",
     "eslint-plugin-import": "2",
-    "eslint-plugin-node": "7",
+    "eslint-plugin-node": "8",
     "eslint-plugin-promise": "4",
     "eslint-plugin-standard": "4",
     "jest": "23"
@@ -52,5 +51,5 @@
     "lint": "eslint src --fix --ignore-pattern *.test.js",
     "test": "jest src"
   },
-  "version": "1.0.1"
+  "version": "2.0.0"
 }
