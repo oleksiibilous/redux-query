@@ -17,6 +17,7 @@
   "dependencies": {
     "immutable": "4.0.0-rc.12"
   },
+  "description": "provides helpers to search through immutable maps, cache results, return pure JS objects",
   "devDependencies": {
     "@babel/cli": "7",
     "@babel/core": "7",
