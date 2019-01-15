@@ -1,2 +1,5 @@
-export { default as init } from './init'
-export { default as get } from './get'
+module.exports = {
+  get: require('./get'),
+  init: require('./init'),
+  store: require('./store'),
+}

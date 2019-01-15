@@ -1,15 +1,18 @@
-import { Map } from 'immutable'
+const Immutable = require('immutable')
 
-export default (key, val, initial = Map()) => {
+module.exports = (key, val, initial = Immutable.Map()) => {
   const [name, alias] = [].concat(key)
 
   return (store, props, result) => {
     let resultNext = key == null ? store : store.get(name, initial)
 
-    if (val) resultNext = [].concat(val).reduce((red, fn) => fn(resultNext, props, red), Map())
+    if (val)
+      resultNext = []
+        .concat(val)
+        .reduce((red, fn) => fn(resultNext, props, red), Immutable.Map())
 
     if (alias == null) {
-      if (Map.isMap(resultNext)) return result.merge(resultNext)
+      if (Immutable.Map.isMap(resultNext)) return result.merge(resultNext)
 
       return result.set(name, resultNext)
     }

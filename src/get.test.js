@@ -1,6 +1,6 @@
-import { Map } from 'immutable'
+const { Map } = require('immutable')
 
-import get from './get'
+const get = require('./get')
 
 jest.mock('immutable')
 
@@ -29,14 +29,14 @@ it('limits store & passes fallback if key is passed', () => {
   get(key, null, initial)(store, props, result)
   get(null, null)(store, props, result)
 
-  expect(store.get).toBeCalledTimes(1)
-  expect(store.get).toBeCalledWith(key, initial)
+  expect(store.get).toHaveBeenCalledTimes(1)
+  expect(store.get).toHaveBeenCalledWith(key, initial)
 })
 
 it('passes store next & props & result to nested getters if val is passed', () => {
   get(null, helper)(store, props, result)
 
-  expect(helper).toBeCalledWith(store, props, expect.any(Object))
+  expect(helper).toHaveBeenCalledWith(store, props, expect.any(Object))
 })
 
 it('assigns store next to result by alias', () => {
@@ -44,7 +44,7 @@ it('assigns store next to result by alias', () => {
 
   get(key)(store, props, result)
 
-  expect(result.set).toBeCalledWith(key[1], store[key[0]])
+  expect(result.set).toHaveBeenCalledWith(key[1], store[key[0]])
 })
 
 it('merges store next to result if alias is undefined & store next is immutable map', () => {
@@ -52,7 +52,7 @@ it('merges store next to result if alias is undefined & store next is immutable 
 
   get(key)(store, props, result)
 
-  expect(result.merge).toBeCalledWith(store[key])
+  expect(result.merge).toHaveBeenCalledWith(store[key])
 })
 
 it('assigns store next to result by key if alias is undefined & store next is not immutable map', () => {
@@ -60,7 +60,7 @@ it('assigns store next to result by key if alias is undefined & store next is no
 
   get(key)(store, props, result)
 
-  expect(result.set).toBeCalledWith(key, store[key])
+  expect(result.set).toHaveBeenCalledWith(key, store[key])
 })
 
 it('assigns store next to result by key if alias is true', () => {
@@ -68,5 +68,5 @@ it('assigns store next to result by key if alias is true', () => {
 
   get(key)(store, props, result)
 
-  expect(result.set).toBeCalledWith(key[0], store[key[0]])
+  expect(result.set).toHaveBeenCalledWith(key[0], store[key[0]])
 })

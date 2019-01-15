@@ -1,10 +1,6 @@
-import {
-  fromJS,
-  getIn,
-  Map,
-} from 'immutable'
+const { fromJS, getIn, Map } = require('immutable')
 
-import init from './init'
+const init = require('./init')
 
 jest.mock('immutable')
 
@@ -25,7 +21,7 @@ beforeEach(() => {
 it('converts any income into immutable obj', () => {
   init(helper)(store, props)
 
-  expect(fromJS).toBeCalledWith(store)
+  expect(fromJS).toHaveBeenCalledWith(store)
 })
 
 it('limits store if scope is passed', () => {
@@ -34,24 +30,28 @@ it('limits store if scope is passed', () => {
   init(helper)(store, props)
   init(helper, scope)(store, props)
 
-  expect(getIn).toBeCalledTimes(1)
-  expect(getIn).toBeCalledWith(store, scope)
+  expect(getIn).toHaveBeenCalledTimes(1)
+  expect(getIn).toHaveBeenCalledWith(store, scope)
 })
 
 it('passes store & props & result to helpers', () => {
   init(helper)(store, props)
 
-  expect(helper).toBeCalledWith(store, props, expect.any(Object))
+  expect(helper).toHaveBeenCalledWith(store, props, expect.any(Object))
 })
 
 it('creates empty object if store is undefined & creates empty object if props is undefined', () => {
   init(helper)(undefined, undefined)
 
-  expect(helper).toBeCalledWith(expect.any(Object), expect.any(Object), expect.any(Object))
+  expect(helper).toHaveBeenCalledWith(
+    expect.any(Object),
+    expect.any(Object),
+    expect.any(Object)
+  )
 })
 
 it('converts any outcome to JS object', () => {
   init(helper)(store, props)
 
-  expect(store.toJS).toBeCalled()
+  expect(store.toJS).toHaveBeenCalled()
 })

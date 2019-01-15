@@ -1,6 +1,6 @@
-import { Map } from 'immutable'
+const { Map } = require('immutable')
 
-import store from './store'
+const store = require('./store')
 
 jest.mock('immutable')
 
@@ -23,7 +23,7 @@ it('computes result when receives new store ', () => {
   fn(s, p, r)
   fn(Map({ version: 2 }), p, r)
 
-  expect(helper).toBeCalledTimes(2)
+  expect(helper).toHaveBeenCalledTimes(2)
 })
 
 it('computes result when receives new props', () => {
@@ -32,7 +32,7 @@ it('computes result when receives new props', () => {
   fn(s, p, r)
   fn(s, {}, r)
 
-  expect(helper).toBeCalledTimes(2)
+  expect(helper).toHaveBeenCalledTimes(2)
 })
 
 it('computes result when receives new result', () => {
@@ -41,7 +41,7 @@ it('computes result when receives new result', () => {
   fn(s, p, r)
   fn(s, p, Map({ version: 2 }))
 
-  expect(helper).toBeCalledTimes(2)
+  expect(helper).toHaveBeenCalledTimes(2)
 })
 
 it('doesn’t compute result when receives old store & old props & old result', () => {
@@ -50,5 +50,5 @@ it('doesn’t compute result when receives old store & old props & old result', 
   fn(s, p, r)
   fn(s, p, r)
 
-  expect(helper).toBeCalledTimes(1)
+  expect(helper).toHaveBeenCalledTimes(1)
 })

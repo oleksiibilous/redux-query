@@ -1,6 +1,6 @@
-import { is } from 'immutable'
+const Immutable = require('immutable')
 
-export default (sequence) => {
+module.exports = (sequence) => {
   let storePrev
   let propsPrev
   let resultPrev
@@ -8,12 +8,18 @@ export default (sequence) => {
   let resultNext
 
   return (store, props, result) => {
-    if (!is(storePrev, store) || propsPrev !== props || !is(resultPrev, result)) {
+    if (
+      !Immutable.is(storePrev, store) ||
+      propsPrev !== props ||
+      !Immutable.is(resultPrev, result)
+    ) {
       storePrev = store
       propsPrev = props
       resultPrev = result
 
-      resultNext = [].concat(sequence).reduce((red, fn) => fn(store, props, red), result)
+      resultNext = []
+        .concat(sequence)
+        .reduce((red, fn) => fn(store, props, red), result)
     }
 
     return resultNext

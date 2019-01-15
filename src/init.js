@@ -1,11 +1,13 @@
-import {
-  fromJS,
-  getIn,
-  Map,
-} from 'immutable'
+const Immutable = require('immutable')
 
-export default (sequence, scope) => (store = {}, props = {}) => {
-  const s = fromJS(store)
+module.exports = (sequence, scope) => (store = {}, props = {}) => {
+  const s = Immutable.fromJS(store)
 
-  return [].concat(sequence).reduce((red, fn) => fn(scope ? getIn(s, scope) : s, props, red), Map()).toJS()
+  return []
+    .concat(sequence)
+    .reduce(
+      (red, fn) => fn(scope ? Immutable.getIn(s, scope) : s, props, red),
+      Immutable.Map()
+    )
+    .toJS()
 }
